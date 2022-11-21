@@ -1,5 +1,6 @@
-import type { Item } from '@components/feed/feed-interface';
+import type { IVideoItem } from '@components/feed/feed-interface';
 
 export interface IVideosProperties {
-    videos: Item[];
+    videos: IVideoItem[];
+    direction?: 'row' | 'column';
 }

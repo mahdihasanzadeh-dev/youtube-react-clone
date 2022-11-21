@@ -10,6 +10,7 @@ export function Loader({ title = 'loading' }: ILoaderProperties): ReactElement {
       justifyContent="center"
       alignItems="center"
       gap={2}
+      minHeight="95vh"
     >
       <Typography
         variant="h2"

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Typography, Card, CardContent, CardMedia } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
-import { demoChannelUrl, demoVideoUrl, demoChannelTitle, demoVideoTitle } from '@assets/constants';
+import { demoChannelUrl, demoVideoUrl, demoChannelTitle, demoVideoTitle, demoProfilePicture } from '@assets/constants';
 import type { ReactElement } from 'react';
 import type { IVideoCardProperties } from './video-card-interface';
 
@@ -10,15 +10,15 @@ export function VideoCard({ video }:IVideoCardProperties):ReactElement {
   return (
     <Card
       sx={{
-        width: { md: '320px', sx: '100%' },
+        width: { xs: '100%', sm: '358px', md: '320px' },
         boxShadow: 'none',
         borderRadius: 0,
       }}
     >
       <Link to={(videoId != null) ? `/video/${videoId as string}` : demoVideoUrl}>
         <CardMedia
-          image={snippet.thumbnails.high.url}
-          sx={{ width: { md: '320px', sx: '100%' }, height: 180 }}
+          image={snippet.thumbnails.high.url ?? demoProfilePicture}
+          sx={{ width: { xs: '100%', sm: '358px', md: '320px' }, height: 180 }}
         />
       </Link>
       <CardContent

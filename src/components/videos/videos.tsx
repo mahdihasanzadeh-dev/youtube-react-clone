@@ -6,11 +6,11 @@ import { Loader } from '@components/loader/loader';
 import type { ReactElement } from 'react';
 import type { IVideosProperties } from './videos-interface';
 
-export function Videos({ videos }: IVideosProperties): ReactElement {
+export function Videos({ videos, direction = 'row' }: IVideosProperties): ReactElement {
   return (
     <Suspense fallback={<Loader />}>
       <Stack
-        direction="row"
+        direction={direction}
         flexWrap="wrap"
         justifyContent="start"
         gap={2}

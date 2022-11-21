@@ -2,12 +2,13 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Typography, CardContent, CardMedia, Box } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { demoChannelUrl, demoProfilePicture } from '@assets/constants';
 import type { ReactElement } from 'react';
 import type { IVideoCardProperties } from './channel-card-interface';
 
 export function ChannelCard({ channelDetail, marginTop = '0px' }:IVideoCardProperties):ReactElement {
+  const location = useLocation();
   return (
     <Box
       sx={{
@@ -16,13 +17,13 @@ export function ChannelCard({ channelDetail, marginTop = '0px' }:IVideoCardPrope
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: { md: '320px', xs: '356px' },
+        width: { xs: '356px', md: '320px' },
         height: '326px',
         margin: 'auto',
         marginTop,
       }}
     >
-      <Link to={`/channel/${channelDetail.id.channelId ?? demoChannelUrl}`}>
+      <Link to={`${location.pathname.startsWith('/channel') ? `${channelDetail.id.channelId ?? demoChannelUrl}` : `/channel/${channelDetail.id.channelId ?? demoChannelUrl}`}`}>
         <CardContent
           sx={{
             display: 'flex',
@@ -55,7 +56,7 @@ export function ChannelCard({ channelDetail, marginTop = '0px' }:IVideoCardPrope
             variant="subtitle1"
             sx={{ fontSize: '12px' }}
           >
-            {channelDetail.statistics?.subscriberCount}
+            {parseInt(channelDetail.statistics?.subscriberCount as string, 10).toLocaleString()}
             {' '}
             {(channelDetail.statistics?.subscriberCount) ? 'Subscribers' : '' }
           </Typography>
