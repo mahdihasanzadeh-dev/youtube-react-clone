@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Typography, CardContent, CardMedia, Box } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
@@ -5,7 +7,7 @@ import { demoChannelUrl, demoProfilePicture } from '@assets/constants';
 import type { ReactElement } from 'react';
 import type { IVideoCardProperties } from './channel-card-interface';
 
-export function ChannelCard({ channelDetail }:IVideoCardProperties):ReactElement {
+export function ChannelCard({ channelDetail, marginTop = '0px' }:IVideoCardProperties):ReactElement {
   return (
     <Box
       sx={{
@@ -14,9 +16,10 @@ export function ChannelCard({ channelDetail }:IVideoCardProperties):ReactElement
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: { md: '305px', xs: '356px' },
+        width: { md: '320px', xs: '356px' },
         height: '326px',
         margin: 'auto',
+        marginTop,
       }}
     >
       <Link to={`/channel/${channelDetail.id.channelId ?? demoChannelUrl}`}>
@@ -46,6 +49,15 @@ export function ChannelCard({ channelDetail }:IVideoCardProperties):ReactElement
             <CheckCircle
               sx={{ fontSize: '14px', color: 'gray', ml: '5px' }}
             />
+          </Typography>
+          <Typography
+            fontWeight="bold"
+            variant="subtitle1"
+            sx={{ fontSize: '12px' }}
+          >
+            {channelDetail.statistics?.subscriberCount}
+            {' '}
+            {(channelDetail.statistics?.subscriberCount) ? 'Subscribers' : '' }
           </Typography>
         </CardContent>
       </Link>

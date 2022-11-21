@@ -1,5 +1,7 @@
-import type { Item } from '@components/feed/feed-interface';
+import type { IVideoItem } from '@components/feed/feed-interface';
 
 export interface IVideoCardProperties {
-    channelDetail: Item;
+    channelDetail: IVideoItem;
+    marginTop?: string;
+
 }

@@ -10,7 +10,5 @@ axios.defaults.headers.get['X-RapidAPI-Key'] = import.meta.env.VITE_YOUTUBE_CORE
 axios.defaults.headers.get['X-RapidAPI-Host'] = import.meta.env.VITE_YOUTUBE_CORE_RAPID_API_URL;
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
 );

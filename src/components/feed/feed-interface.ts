@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import type { Statistics } from '@components/channel-details/channel-details-interface';
 
 interface Default {
     url: string;
@@ -34,10 +35,11 @@ interface Snippet {
     publishTime: string;
 }
 
-export interface Item {
+export interface IVideoItem {
     kind: string;
     id: Id;
     snippet: Snippet;
+    statistics?: Statistics;
 }
 
 export interface IGetCategoriesVideoResponseBody {
@@ -45,11 +47,11 @@ export interface IGetCategoriesVideoResponseBody {
     nextPageToken: string;
     regionCode: string;
     pageInfo: PageInfo;
-    items: Item[];
+    items: IVideoItem[];
 }
 
 export interface IFeedState {
     selectedCategory: string;
-    videos: Item[];
+    videos: IVideoItem[];
     isLoading: boolean;
 }

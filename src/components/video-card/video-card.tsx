@@ -15,7 +15,7 @@ export function VideoCard({ video }:IVideoCardProperties):ReactElement {
         borderRadius: 0,
       }}
     >
-      <Link to={(videoId != null) ? `/video/${videoId}` : demoVideoUrl}>
+      <Link to={(videoId != null) ? `/video/${videoId as string}` : demoVideoUrl}>
         <CardMedia
           image={snippet.thumbnails.high.url}
           sx={{ width: { md: '320px', sx: '100%' }, height: 180 }}
@@ -24,23 +24,22 @@ export function VideoCard({ video }:IVideoCardProperties):ReactElement {
       <CardContent
         sx={{ backgroundColor: '#1e1e1e', height: '106px' }}
       >
-        <Link to={(videoId != null) ? `/video/${videoId}` : demoVideoUrl}>
+        <Link to={(videoId != null) ? `/video/${videoId as string}` : demoVideoUrl}>
           <Typography
             variant="subtitle1"
-            fontWeight="bold"
             color="#FFF"
             textOverflow="truncate"
           >
-            {snippet.title || demoVideoTitle}
+            {snippet.title ?? demoVideoTitle}
           </Typography>
         </Link>
-        <Link to={snippet.channelId ? `/channel/${snippet.channelId}` : demoChannelUrl}>
+        <Link to={snippet.channelId as string ? `/channel/${snippet.channelId as string}` : demoChannelUrl}>
           <Typography
             variant="subtitle2"
             fontWeight="bold"
             color="gray"
           >
-            {snippet.channelTitle || demoChannelTitle}
+            {snippet.channelTitle.slice(0, 60) ?? demoChannelTitle}
             <CheckCircle
               sx={{ fontSize: '12px', color: 'gray', ml: '5px' }}
             />
